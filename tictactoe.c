@@ -8,15 +8,15 @@ void markingBoard(){
 void printBoard(){
     printf("\n\n");
     printf("Tic Tac Toe\n");
-    printf('Player 1 (X) -- player 2 (O)\n\n');
+    printf("Player 1 (X) -- player 2 (O)\n\n");
     printf("+-----+\n");
     printf("|%c|%c|%c|\n",box[1],box[2],box[3]);
     printf("+-----+\n");
-    printf("|%c|%c|%c|\n",box[1],box[2],box[3]);
+    printf("|%c|%c|%c|\n",box[4],box[5],box[6]);
     printf("+-----+\n");
-    printf("|%c|%c|%c|\n",box[1],box[2],box[3]);
+    printf("|%c|%c|%c|\n",box[7],box[8],box[9]);
     printf("+-----+\n\n");
-
+    printf("select square to begin (options 1-9\n");
 
     
 }
@@ -39,18 +39,21 @@ int main(){
         // is there a winner? no? while there is no winner = true
         // is there a winner? yes? while there is a winner= false
     // print winner
-    printf("welcome to tic tac toe");
+    printf("welcome to tic tac toe\n");
+    printf("select gamemode: 1= player v player, 2= player v AI\n");
     int input;
     scanf("%d",&input);
     bool game;
     game = false;
     if (input == 1)
     {
-        printf("gamemode selected: player v player");
+        printf("gamemode selected: player v player\n");
+        printBoard();
     }
     else if (input == 2)
     {
-        printf("gamemode selected: player v AI");
+        printf("gamemode selected: player v AI\n");
+        printBoard();
     }
     
     
