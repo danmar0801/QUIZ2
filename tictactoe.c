@@ -2,7 +2,24 @@
 #include"string.h"
 #include<stdbool.h>
 // tic tac toe game between 2 players or player vs computer
+char box[10]={'0','1','2','3','4','5','6','7','8','9'};
+void markingBoard(){
+}
+void printBoard(){
+    printf("\n\n");
+    printf("Tic Tac Toe\n");
+    printf('Player 1 (X) -- player 2 (O)\n\n');
+    printf("+-----+\n");
+    printf("|%c|%c|%c|\n",box[1],box[2],box[3]);
+    printf("+-----+\n");
+    printf("|%c|%c|%c|\n",box[1],box[2],box[3]);
+    printf("+-----+\n");
+    printf("|%c|%c|%c|\n",box[1],box[2],box[3]);
+    printf("+-----+\n\n");
 
+
+    
+}
 int main(){
     // prompt the user for the game they wish to play
         // 1 = player v player
