@@ -3,8 +3,52 @@
 #include<stdbool.h>
 // tic tac toe game between 2 players or player vs computer
 char box[10]={'0','1','2','3','4','5','6','7','8','9'};
-void markingBoard(){
+//this func updates the table to place the payers mark
+void markingBoard( int choice, char mark){
+    if(choice==1 && box[1]='1')
+    {
+        box[1]=mark;
+    }
+    else if (choice==2 && box[2]=='2')
+    {
+        box[2]=mark;
+    }
+    else if (choice==3 && box[3]=='3')
+    {
+        box[3]=mark;
+    }
+    else if (choice==4 && box[4]=='4')
+    {
+        box[4]=mark;
+    }
+    else if (choice==5 && box[2]=='5')
+    {
+        box[5]=mark;
+    }
+    else if (choice==6 && box[6]=='6')
+    {
+        box[6]=mark;
+    }
+    else if (choice==7 && box[7]=='7')
+    {
+        box[7]=mark;
+    }
+    else if (choice==8 && box[8]=='8')
+    {
+        box[8]=mark;
+    }
+    else if (choice==9 && box[9]=='9')
+    {
+        box[9]=mark;
+    }
+    else {
+        printf("Invalid choice...\n");
+    }
+    
+    
 }
+
+// this func creates the outline of the tic tac toe baord and lays out what plyabale options there is
 void printBoard(){
     printf("\n\n");
     printf("Tic Tac Toe\n");
@@ -21,30 +65,18 @@ void printBoard(){
     
 }
 int main(){
-    // prompt the user for the game they wish to play
-        // 1 = player v player
-        // 2 = player v AI
-    // read information from console
-        // if input = 1 
-            // while there is no winner = true for player v player
-        // if input = 2
-            // while there is no winner = true for player v AI
-    // display console based on user input and create tictactoe table
-            // 
-    // while there is no winner = true
-        // ask user for input
-        // update table
-        // creat random computer input
-        // update table
-        // is there a winner? no? while there is no winner = true
-        // is there a winner? yes? while there is a winner= false
-    // print winner
+    int choice;
+    char mark;
+    //pritns the welcome statments
     printf("welcome to tic tac toe\n");
     printf("select gamemode: 1= player v player, 2= player v AI\n");
+    //input for game mode
     int input;
     scanf("%d",&input);
+    // this bool is for checking if the game will continue or not
     bool game;
     game = false;
+    //will decided which game mode to run
     if (input == 1)
     {
         printf("gamemode selected: player v player\n");
