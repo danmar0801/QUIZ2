@@ -134,4 +134,8 @@ int checkForWin(){
     {
         return 1;
     }
+    //there is no winner
+    else{
+        return 0;
+    }
 }
