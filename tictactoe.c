@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include"string.h"
 #include<stdbool.h>
+#include<stdlib.h>
+int checkForWin();
 // tic tac toe game between 2 players or player vs computer
 char box[10]={'0','1','2','3','4','5','6','7','8','9'};
 //this func updates the table to place the payers mark
@@ -21,7 +23,7 @@ void markingBoard( int choice, char mark){
     {
         box[4]=mark;
     }
-    else if (choice==5 && box[2]=='5')
+    else if (choice==5 && box[5]=='5')
     {
         box[5]=mark;
     }
@@ -60,9 +62,6 @@ void printBoard(){
     printf("+-----+\n");
     printf("|%c|%c|%c|\n",box[7],box[8],box[9]);
     printf("+-----+\n\n");
-    printf("select square to begin (options 1-9\n");
-
-    
 }
 int main(){
     int choice;
@@ -76,39 +75,43 @@ int main(){
     int input;
     scanf("%d",&input);
     // this bool is for checking if the game will continue or not
-    bool game;
-    game = false;
+    int game;
     //will decided which game mode to run
     if (input == 1)
     {
         printf("gamemode selected: player v player\n");
-        game==true;
+        game = 1;
 
         do{
-            player = (player % 2)? 1:2;
             printBoard();
-            printf("player %d, enter a number from 1-9, to place you mark on the board:",player);
+            player = (player % 2)? 1:2;
+
+            printf("player %d, enter a number from 1-9, to place you mark on the board: ",player);
             scanf("%d",&choice);
-            mark = (player==1)? 'x':0;
-            mark = (player==2)? 'O':0;
+            mark = (player==1)? 'X':'O';
             markingBoard(choice, mark);
             i = checkForWin();
-            if (i == 1){
-                game = false;
-                printf("we have a winner");
-            }
-            {
-                /* code */
-            }
             
+            if (i == 1){
+                printf("we have a winner\n");
+                printBoard();
+                game = 0;
+            }
+            else if (i==-1)
+            {
+                printf("its a draw\n");
+                printBoard();
+                game = 0;
+            }
             player++;
 
-        }while (game==true);
+        }while (game ==1);
     }
     else if (input == 2)
     {
         printf("gamemode selected: player v AI\n");
-        game==true;
+        int option[9]= {1,2,3,4,5,6,7,8,9};
+        int ai_choice = rand();
     }
     
     
@@ -160,10 +163,10 @@ int checkForWin(){
         return 1;
     }
     // check if there is a draw
-    else if (box[1]!=1 && box[2]!=2 && box[3]!=3 && box[4]!=4 && box[5]!=5 && box[6]!=6 && box[7]!=7 && box[8]!=8 && box[9]!=9){
-        return 0;
+    else if (box[1]!= '1' && box[2]!='2' && box[3]!='3' && box[4]!='4' && box[5]!='5' && box[6]!='6' && box[7]!='7' && box[8]!='8' && box[9]!='9'){
+        return -1;
     }
     else{
-        return -1;
+        return 0;
     }
 }
