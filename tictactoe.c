@@ -175,12 +175,10 @@ int main(){
                 {
                     r = rand() % (9 + 1 - 1) + 1;
                     check = validChoice(r);
-                    if(check!==1){
-                        lvl=1;
+                    if(check==1){
+                        lvl=0;
                     }
-                    else{
-                        lvl=1;
-                    }
+                    
                 } while (lvl==1);
                 choice=r;
                 printf("ai chooses%d\n",r);
