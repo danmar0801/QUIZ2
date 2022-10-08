@@ -1,7 +1,9 @@
+#include<time.h>
 #include<stdio.h>
 #include"string.h"
 #include<stdbool.h>
 #include<stdlib.h>
+
 int checkForWin();
 // tic tac toe game between 2 players or player vs computer
 char box[10]={'0','1','2','3','4','5','6','7','8','9'};
@@ -66,6 +68,7 @@ int main(){
     int player = 1;
     int i;
     char mark;
+    int ai_choice;
     //pritns the welcome statments
     printf("welcome to tic tac toe\n");
     printf("select gamemode: 1= player v player, 2= player v AI\n");
@@ -111,7 +114,44 @@ int main(){
     {
         printf("gamemode selected: player v AI\n");
         int option[9]= {1,2,3,4,5,6,7,8,9};
-        int ai_choice = rand();
+        printf("Tic Tac Toe\n");
+        printf("Player 1 (X) -- player 2 (O)\n\n");
+        game = 1;
+        do{
+            printBoard();
+            //player = (player % 2)? 1:2;
+            //this determines who should play
+            if (player % 2)
+            {
+                player=1;
+                printf("player %d, enter a number from 1-9, to place you mark on the board: ",player);
+                scanf("%d",&choice);
+                mark = (player==1)? 'X':'O';
+            }
+            else {
+                player =2;
+
+            }
+            
+            printf("player %d, enter a number from 1-9, to place you mark on the board: ",player);
+            scanf("%d",&choice);
+            markingBoard(choice, mark);
+            i = checkForWin();
+            
+            if (i == 1){
+                printf("we have a winner\n");
+                printBoard();
+                game = 0;
+            }
+            else if (i==-1)
+            {
+                printf("its a draw\n");
+                printBoard();
+                game = 0;
+            }
+            player++;
+
+        }while (game ==1);
     }
     
     
