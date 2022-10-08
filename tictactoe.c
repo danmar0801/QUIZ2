@@ -7,6 +7,7 @@
 int checkForWin();
 // tic tac toe game between 2 players or player vs computer
 char box[10]={'0','1','2','3','4','5','6','7','8','9'};
+int valid=0;
 //this func updates the table to place the payers mark
 void markingBoard( int choice, char mark){
     if(choice==1 && box[1]=='1')
@@ -46,12 +47,45 @@ void markingBoard( int choice, char mark){
         box[9]=mark;
     }
     else {
-        printf("Invalid choice...\n");
+        printf("Invalid choice..");
+        valid=1;
     }
     
     
 }
-
+int validChoice(int r)
+{
+    if(r==1 && box[1]=='1'){
+        return 1;
+    }
+    else if (r==2 && box[2]=='2'){
+        return 1;
+    }
+    else if (r==3 && box[2]=='3'){
+        return 1;
+    }
+    else if (r==4 && box[2]=='4'){
+        return 1;
+    }
+    else if (r==5 && box[2]=='5'){
+        return 1;
+    }
+    else if (r==6 && box[2]=='6'){
+        return 1;
+    }
+    else if (r==7 && box[2]=='7'){
+        return 1;
+    }
+    else if (r==8 && box[2]=='8'){
+        return 1;
+    }
+    else if (r==9 && box[2]=='9'){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
 // this func creates the outline of the tic tac toe baord and lays out what plyabale options there is
 void printBoard(){
     printf("\n\n");
@@ -117,6 +151,7 @@ int main(){
         printf("Tic Tac Toe\n");
         printf("Player 1 (X) -- player 2 (O)\n\n");
         game = 1;
+        srand(time(NULL)); 
         do{
             printBoard();
             //player = (player % 2)? 1:2;
@@ -126,16 +161,25 @@ int main(){
                 player=1;
                 printf("player %d, enter a number from 1-9, to place you mark on the board: ",player);
                 scanf("%d",&choice);
-                mark = (player==1)? 'X':'O';
             }
             else {
                 player =2;
+                int r = rand() % (9 + 1 - 1) + 1;
+                if (validChoice(r)==0)
+                {
+                    int r = rand() % (9 + 1 - 1) + 1;
+                }
+                else{
+                    choice = r;
+                }
+                
+                printf("ai chooses\n");
 
             }
-            
-            printf("player %d, enter a number from 1-9, to place you mark on the board: ",player);
-            scanf("%d",&choice);
+            mark = (player==1)? 'X':'O';
             markingBoard(choice, mark);
+            
+            
             i = checkForWin();
             
             if (i == 1){
