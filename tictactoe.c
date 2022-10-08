@@ -53,8 +53,6 @@ void markingBoard( int choice, char mark){
 // this func creates the outline of the tic tac toe baord and lays out what plyabale options there is
 void printBoard(){
     printf("\n\n");
-    printf("Tic Tac Toe\n");
-    printf("Player 1 (X) -- player 2 (O)\n\n");
     printf("+-----+\n");
     printf("|%c|%c|%c|\n",box[1],box[2],box[3]);
     printf("+-----+\n");
@@ -80,6 +78,8 @@ int main(){
     if (input == 1)
     {
         printf("gamemode selected: player v player\n");
+        printf("Tic Tac Toe\n");
+        printf("Player 1 (X) -- player 2 (O)\n\n");
         game = 1;
 
         do{
