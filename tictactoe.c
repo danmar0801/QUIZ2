@@ -66,6 +66,8 @@ void printBoard(){
 }
 int main(){
     int choice;
+    int player = 1;
+    int i;
     char mark;
     //pritns the welcome statments
     printf("welcome to tic tac toe\n");
@@ -80,13 +82,36 @@ int main(){
     if (input == 1)
     {
         printf("gamemode selected: player v player\n");
-        printBoard();
+        game==true;
+
+        do{
+            player = (player % 2)? 1:2;
+            printBoard();
+            printf("player %d, enter a number from 1-9, to place you mark on the board:",player);
+            scanf("%d",&choice);
+            mark = (player==1)? 'x':0;
+            mark = (player==2)? 'O':0;
+            markingBoard(choice, mark);
+            i = checkForWin();
+            if (i == 1){
+                game = false;
+                printf("we have a winner");
+            }
+            {
+                /* code */
+            }
+            
+            player++;
+
+        }while (game==true);
     }
     else if (input == 2)
     {
         printf("gamemode selected: player v AI\n");
-        printBoard();
+        game==true;
     }
+    
+    
     
     
     // +-----+
@@ -134,8 +159,11 @@ int checkForWin(){
     {
         return 1;
     }
-    //there is no winner
-    else{
+    // check if there is a draw
+    else if (box[1]!=1 && box[2]!=2 && box[3]!=3 && box[4]!=4 && box[5]!=5 && box[6]!=6 && box[7]!=7 && box[8]!=8 && box[9]!=9){
         return 0;
+    }
+    else{
+        return -1;
     }
 }
