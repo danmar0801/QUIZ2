@@ -99,7 +99,7 @@ void printBoard(){
 }
 int main(){
     int choice;
-    int player = 1;
+    int player ;
     int i;
     char mark;
     int ai_choice;
@@ -114,6 +114,7 @@ int main(){
     //will decided which game mode to run
     if (input == 1)
     {
+        player =1;
         printf("gamemode selected: player v player\n");
         printf("Tic Tac Toe\n");
         printf("Player 1 (X) -- player 2 (O)\n\n");
@@ -146,42 +147,50 @@ int main(){
     }
     else if (input == 2)
     {
+        player = 1;
+        int lvl=1;
+        int check;
+        int r;
         printf("gamemode selected: player v AI\n");
-        int option[9]= {1,2,3,4,5,6,7,8,9};
         printf("Tic Tac Toe\n");
-        printf("Player 1 (X) -- player 2 (O)\n\n");
+        printf("Player 1 (X) -- AI (O)\n\n");
         game = 1;
         srand(time(NULL)); 
         do{
             printBoard();
             //player = (player % 2)? 1:2;
             //this determines who should play
-            if (player % 2)
+            if (player == 1)
             {
-                player=1;
                 printf("player %d, enter a number from 1-9, to place you mark on the board: ",player);
                 scanf("%d",&choice);
+                mark = 'X';
+                markingBoard(choice, mark);
+                player = 2;
             }
-            else {
-                player =2;
-                int r = rand() % (9 + 1 - 1) + 1;
-                if (validChoice(r)==0)
-                {
-                    int r = rand() % (9 + 1 - 1) + 1;
-                }
-                else{
-                    choice = r;
-                }
-                
-                printf("ai chooses\n");
 
+            else if(player==2) 
+            {
+                do
+                {
+                    r = rand() % (9 + 1 - 1) + 1;
+                    check = validChoice(r);
+                    if(check!==1){
+                        lvl=1;
+                    }
+                    else{
+                        lvl=1;
+                    }
+                } while (lvl==1);
+                choice=r;
+                printf("ai chooses%d\n",r);
+                mark = 'O';
+                markingBoard(choice, mark);
+                player=1;
             }
-            mark = (player==1)? 'X':'O';
-            markingBoard(choice, mark);
             
             
             i = checkForWin();
-            
             if (i == 1){
                 printf("we have a winner\n");
                 printBoard();
@@ -193,9 +202,9 @@ int main(){
                 printBoard();
                 game = 0;
             }
-            player++;
 
         }while (game ==1);
+
     }
     
     
