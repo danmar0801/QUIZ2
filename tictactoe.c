@@ -5,7 +5,7 @@
 char box[10]={'0','1','2','3','4','5','6','7','8','9'};
 //this func updates the table to place the payers mark
 void markingBoard( int choice, char mark){
-    if(choice==1 && box[1]='1')
+    if(choice==1 && box[1]=='1')
     {
         box[1]=mark;
     }
@@ -90,11 +90,48 @@ int main(){
     
     
     // +-----+
-    // | | | |
+    // |1|2|3|
     // +-----+
-    // | | | |
+    // |4|5|6|
     // +-----+
-    // | | | |
+    // |7|8|9|
     // +-----+
     return 0;
+}
+int checkForWin(){
+    //checking if there is a horizontal win
+    if (box[1]==box[2] && box[2]==box[3])
+    {
+        return 1;
+    }
+    else if (box[4]==box[5] && box[5]==box[6])
+    {
+        return 1;
+    }
+    else if (box[7]==box[8] && box[8]==box[9])
+    {
+        return 1;
+    }
+    //checking if there is a vertical win
+    if (box[1]==box[4] && box[4]==box[7])
+    {
+        return 1;
+    }
+    else if (box[2]==box[5] && box[5]==box[8])
+    {
+        return 1;
+    }
+    else if (box[3]==box[6] && box[6]==box[9])
+    {
+        return 1;
+    }
+    //checking if there is a diagnoal win
+    if (box[1]==box[5] && box[5]==box[9])
+    {
+        return 1;
+    }
+    else if (box[3]==box[5] && box[5]==box[7])
+    {
+        return 1;
+    }
 }
